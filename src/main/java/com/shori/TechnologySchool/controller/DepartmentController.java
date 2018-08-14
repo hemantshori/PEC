@@ -1,10 +1,11 @@
 package com.shori.TechnologySchool.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shori.TechnologySchool.domain.Department;
-
+import com.shori.TechnologySchool.domain.Students;
 import com.shori.TechnologySchool.repo.DepartmentRepo;
 
 @RestController
@@ -30,12 +31,12 @@ public class DepartmentController {
 
 	}
 
-	// @GetMapping("/{dept_id}")
-	// public Optional<Department> getDepartmentById(@PathVariable int dept_id)
-	// {
-	//
-	// return departmentRepo.findById(dept_id);
-	// }
+	 @GetMapping("/{dept_id}/students")
+	 public List<Students> getDepartmentById(@PathVariable int dept_id)
+	 {
+		 Optional<Department> depList = departmentRepo.findById(dept_id);
+		return depList.get().getStudents();
+	 }
 
 	// add a dept
 

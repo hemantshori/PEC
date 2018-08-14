@@ -36,15 +36,18 @@ public class StudentController {
 	// inject data
 
 	// @RequestMapping(value = "/update/{name}", method = RequestMethod.POST)
-	@PostMapping("/update/{name}")
-	public Students addStudent(@RequestBody Students students, @PathVariable String name) {
+	@PostMapping("/update/{name}/{dept_id}")
+	public void addStudent(@RequestBody Students students, @PathVariable String name,@PathVariable Integer dept_id) {
 		Department dp = new Department();
-
-		dp.setDept_name("elec");
+		Students sp = new Students();
+		sp.setName(name);
+		sp.setStudent_id(dept_id);
+		dp.setDept_id(dept_id);
 		departmentRepo.save(dp);
+		studentRepo.save(sp);
 
-		students.setname(name);
-		return studentRepo.save(students);
+	
+		
 
 	}
 
