@@ -1,5 +1,6 @@
 package com.shori.TechnologySchool.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Service;
@@ -21,20 +23,12 @@ public class Department {
 	private Integer dept_id;
 
 	private String dept_name;
-
-	private Students students;
-
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public Students getStudents() {
-		return students;
-	}
-
-	public void setStudents(Students students) {
-		this.students = students;
-	}
+	
+	@ManyToOne
+    private Students students;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	public Integer getDept_id() {
 		return dept_id;

@@ -21,7 +21,7 @@ public class Students {
 	private Department department;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getRollNo() {
 		return rollNo;
 	}

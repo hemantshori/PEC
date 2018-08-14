@@ -26,10 +26,10 @@ public class StudentController {
 	@Autowired
 	private DepartmentRepo departmentRepo;
 
-	@GetMapping("/findallstudents/{branchName}")
-	public List<Students> getStudents(@PathVariable String branchName) {
+	@GetMapping("/findallstudents/{dept_name}")
+	public List<Department> getStudents(@PathVariable String dept_name) {
 
-		return studentRepo.findByName(branchName);
+		return studentRepo.findByName(dept_name);
 
 	}
 
